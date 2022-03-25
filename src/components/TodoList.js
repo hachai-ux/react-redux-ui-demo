@@ -6,10 +6,10 @@ const selectTodos = state => state.todos.map(todo => todo.id)
 
 const TodoList = () => {
     //automatically subscribes to redux store
-    const todos = useSelector(selectTodos)
+    const todoIds = useSelector(selectTodos)
 
-    const renderedListItems = todos.map((todo) => {
-        return <TodoListItem key={todo.id} todo={todo} />
+    const renderedListItems = todoId.map((todoId) => {
+        return <TodoListItem key={todoId} id={todoId} />
     })
 
     return <ul className="todo-list">{renderedListItems}</ul>

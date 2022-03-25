@@ -1,13 +1,20 @@
 import React from 'react'
-
-
+import { useSelector, useDispatch } from 'react-redux'
 import { availableColors, capitalize } from '../filters/colors'
 
-const TodoListItem = ({ todo, onColorChange, onCompletedChange, onDelete }) => {
+//selector function
+const selectTodoById = (state, todoId) => {
+    return state.todos.find(todo => todo.id === todoId)
+}
+
+const TodoListItem = ({ id }) => {
+    const todo = useSelector(state => selectTodoById(state, id))
     const { text, completed, color } = todo
 
+    const dispatch = useDispatch()
+
     const handleCompletedChanged = (e) => {
-        onCompletedChange(e.target.checked)
+        dispatch({type: 'todos/todoToggled', payload: todo.id})
     }
 
     const handleColorChanged = (e) => {
