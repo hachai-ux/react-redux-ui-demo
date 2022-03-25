@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import TodoListItem from './TodoListItem'
 
-const selectTodos = state => state.todos
+const selectTodos = state => state.todos.map(todo => todo.id)
 
 const TodoList = () => {
     //automatically subscribes to redux store
